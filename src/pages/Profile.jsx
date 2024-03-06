@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import users from "../data_models/users.json";
 import posts from "../data_models/posts.json";
 const Profile = () => {
   const { username } = useParams();
@@ -8,10 +7,10 @@ const Profile = () => {
 
     return tempPosts.map((x) => {
       return (
-        <>
+        <a href={"/c/"+x.comunatee+"/"+x.op+"/"+x.id}>
           {x.content}
           <br />
-        </>
+        </a>
       );
     });
   };

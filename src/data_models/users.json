@@ -1,5 +1,5 @@
 [
-  { "username": "kalekdan" },
-  { "username": "jamesiam" },
-  { "username": "bob_smith" }
+  { "username": "kalekdan", "post_rating":100 , "comment_rating":10, "profile_pic":"https://avatars.githubusercontent.com/u/6087595?v=4"},
+  { "username": "jamesiam" , "post_rating":2, "comment_rating":-10, "profile_pic":""},
+  { "username": "bob_smith" , "post_rating":-19, "comment_rating":12, "profile_pic":""}
 ]

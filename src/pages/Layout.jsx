@@ -22,24 +22,25 @@ const Layout = () => {
     });
   };
   return (
-    <table>
-      <tr>
-        <td>
-          <nav>
-            <h2>Comunatees</h2>
-            <ul>{getComunateeListLinks()}</ul>
-          </nav>{" "}
-        </td>
-        <td>
-          <nav>
-            <h2>Users</h2>
-            <ul>{getUserListLinks()}</ul>
-          </nav>
-        </td>
-      </tr>
-
+    <>
+      <table>
+        <tr>
+          <td>
+            <nav>
+              <h2>Comunatees</h2>
+              <ul>{getComunateeListLinks()}</ul>
+            </nav>
+          </td>
+          <td>
+            <nav>
+              <h2>Users</h2>
+              <ul>{getUserListLinks()}</ul>
+            </nav>
+          </td>
+        </tr>
+      </table>
       <Outlet />
-    </table>
+    </>
   );
 };
 

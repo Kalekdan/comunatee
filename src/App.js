@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Layout on the top of every page */}
-        <Route path="/" element={<Layout />}> 
+        <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="u/:username" element={<Profile />} />
           <Route path="c/:comunatee" element={<Comunatee />} />

@@ -4,7 +4,7 @@ import comments from "../data_models/comments.json";
 
 const CommentsSection = ({ postId }) => {
     return (
-        <div>{comments.filter(x => x.postId === postId)[0].threads.map(thread => { return <Thread threadId={thread}/> })}</div>
+        <div>{comments.filter(x => x.postId === postId)[0].threads.map(topLevelCommentId => { return <Thread commentId={topLevelCommentId}/> })}</div>
     )
 }
 

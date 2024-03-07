@@ -1,7 +1,7 @@
 import React from 'react'
 import threads from "../data_models/threads.json";
 
-const Comment = ({ content, op, threadId , level = 0}) => {
+const Comment = ({ content, op, commentId , level = 0}) => {
 
     const generateIndents = (count) => {
         var toReturn = ''
@@ -26,8 +26,8 @@ const Comment = ({ content, op, threadId , level = 0}) => {
                 </tr>
 
             </table>
-            {threads.filter(thread => thread.parentComment === threadId).map(x => {
-                return <Comment content={x.content} op={x.op} threadId={x.threadId} level={level+1}/>
+            {threads.filter(thread => thread.parentComment === commentId).map(x => {
+                return <Comment content={x.content} op={x.op} commentId={x.commentId} level={level+1}/>
             })}
         </>
     )

@@ -6,7 +6,7 @@ To build and run locally:
 
 ### `pnpm start`
 
-
+## Latest build currently hosted at https://comunatee.netlify.app/
 
 # Comunatee
 

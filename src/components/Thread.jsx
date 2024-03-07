@@ -1,9 +1,16 @@
 import React from 'react'
 import threads from "../data_models/threads.json";
+import Comment from './Comment';
 
-const Thread = ({postId}) => {
+const Thread = ({ threadId }) => {
   return (
-    <div>{threads.filter(x=>x.postId === postId)[0].comments.map(x=> {return <p>{x}</p>})}</div>
+    <>
+      {threads.filter(thread => thread.threadId === threadId).map(x => {
+        return <Comment content={x.content} op={x.op} threadId={x.threadId}/>
+      }
+
+      )}
+    </>
   )
 }
 

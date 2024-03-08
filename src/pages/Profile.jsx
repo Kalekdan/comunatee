@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import posts from "../data_models/posts.json";
 import users from "../data_models/users.json"
 import React from "react";
+import PostLink from "../components/PostLink";
 
 const Profile = () => {
   const { username } = useParams();
@@ -11,10 +12,10 @@ const Profile = () => {
 
     return tempPosts.map((x) => {
       return (
-        <a href={"/c/" + x.comunatee + "/" + x.op + "/" + x.id}>
-          {x.content}
+        <>
+          <PostLink comunatee={x.comunatee} op={x.op} postId={x.id} text={x.content} />
           <br />
-        </a>
+        </>
       );
     });
   };

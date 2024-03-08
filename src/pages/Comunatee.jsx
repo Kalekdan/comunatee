@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import posts from "../data_models/posts.json";
+import UsernameLink from "../components/UsernameLink";
+import PostLink from "../components/PostLink";
 
 const Comunatee = () => {
   const { comunatee } = useParams();
@@ -11,10 +13,13 @@ const Comunatee = () => {
     return tempPosts.map((x) => {
       return (
         <tr>
-            <td>
-                {x.op}
+          <td>
+            <UsernameLink username={x.op}/>
+          </td>
+          <td>
+            <PostLink comunatee={comunatee} op={x.op} postId={x.id} text={x.content}></PostLink>
+           
             </td>
-          <td>{x.content}</td>
         </tr>
       );
     });

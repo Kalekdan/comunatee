@@ -1,5 +1,6 @@
 import React from 'react'
 import threads from "../data_models/threads.json";
+import UsernameLink from './UsernameLink';
 
 const Comment = ({ content, op, commentId , level = 0}) => {
 
@@ -18,7 +19,8 @@ const Comment = ({ content, op, commentId , level = 0}) => {
             <table style={{display:"inline"}}>
                 <tr>
                     <td>
-                        {op}
+                        <UsernameLink username={op}></UsernameLink>
+                        
                     </td>
                     <td>
                         {content}

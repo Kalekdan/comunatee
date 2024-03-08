@@ -1,13 +1,15 @@
 import { Outlet, Link } from "react-router-dom";
 import users from "../data_models/users.json";
 import comunatees from "../data_models/comunatees.json";
+import UsernameLink from "../components/UsernameLink";
+import ComunateeLink from "../components/ComunateeLink";
 
 const Layout = () => {
   const getUserListLinks = () => {
     return users.map((x) => {
       return (
         <li>
-          <Link to={"/u/" + x.username}>{x.username}</Link>
+          <UsernameLink username={x.username}/>
         </li>
       );
     });
@@ -16,13 +18,14 @@ const Layout = () => {
     return comunatees.map((x) => {
       return (
         <li>
-          <Link to={"/c/" + x}>{x}</Link>
+          <ComunateeLink comunatee={x}/>
         </li>
       );
     });
   };
   return (
     <>
+    <h1>Comunatee</h1>
       <table>
         <tr>
           <td>

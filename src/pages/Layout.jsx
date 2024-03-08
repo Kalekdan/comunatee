@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import users from "../data_models/users.json";
 import comunatees from "../data_models/comunatees.json";
 import UsernameLink from "../components/UsernameLink";

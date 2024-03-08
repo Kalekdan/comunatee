@@ -3,13 +3,14 @@ import users from "../data_models/users.json";
 import comunatees from "../data_models/comunatees.json";
 import UsernameLink from "../components/UsernameLink";
 import ComunateeLink from "../components/ComunateeLink";
+import HeaderBar from "../components/HeaderBar";
 
 const Layout = () => {
   const getUserListLinks = () => {
     return users.map((x) => {
       return (
         <li>
-          <UsernameLink username={x.username}/>
+          <UsernameLink username={x.username} />
         </li>
       );
     });
@@ -18,14 +19,14 @@ const Layout = () => {
     return comunatees.map((x) => {
       return (
         <li>
-          <ComunateeLink comunatee={x}/>
+          <ComunateeLink comunatee={x} />
         </li>
       );
     });
   };
   return (
     <>
-    <h1>Comunatee</h1>
+    <HeaderBar/>
       <table>
         <tr>
           <td>

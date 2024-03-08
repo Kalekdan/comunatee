@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Layout on the top of every page */}
+        {/* Layout displays on every page */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="u/:username" element={<Profile />} />

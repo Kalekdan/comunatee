@@ -1,0 +1,48 @@
+$base-color-1: #b5c0d0;
+$base-color-2: #ccd3ca;
+$highlight-color-1: #f5e8dd;
+$highlight-color-2: #eed3d9;
+
+.header-bar {
+    background-color: $base-color-1;
+}
+
+.header-bar .header-title {
+    margin: 0;
+    color: $highlight-color-1;
+    font-size: larger;
+}
+
+.header-bar nav {
+    float: right;
+}
+
+.header-bar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-bar li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.header-bar .last-header-entry li {
+    display: inline-block;
+}
+
+/* The dropdown container */
+// .dropdown {
+//     overflow: hidden;
+// }
+
+.dropdown-content {
+    display: none;
+}
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: $base-color-2;
+}

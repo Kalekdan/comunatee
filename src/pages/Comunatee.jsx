@@ -1,15 +1,29 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import posts from "../data_models/posts.json";
-import communatees from "../data_models/comunatees.json";
 import UsernameLink from "../components/UsernameLink";
 import PostLink from "../components/PostLink";
+import { getComunatees } from "../api/comunatees"; // Assuming you have an API function to fetch comunatees
 
 const Comunatee = () => {
-  const { comunatee } = useParams();
+  const { comunatee } = useParams(); // comunatee name from URL
+  const [comunateeDetails, setComunatee] = useState([]);
+
+  useEffect(() => {
+    const fetchComunatee = async () => {
+      try {
+        const comunateeList = await getComunatees(); // Call the function to fetch comunatees
+        setComunatee(comunateeList.filter((x) => x.name === comunatee)[0]); // Update state with fetched comunatees
+      } catch (error) {
+        console.error("Failed to fetch comunatees:", error);
+      }
+    };
+    fetchComunatee();
+  },); 
 
   const getPosts = () => {
-    var tempPosts = posts.filter((x) => x.comunatee === comunatee);
+    var tempPosts = posts.filter((x) => x.comunatee === comunateeDetails.name);
 
     return tempPosts.map((x) => {
       return (
@@ -19,7 +33,7 @@ const Comunatee = () => {
           </td>
           <td>
             <PostLink
-              comunatee={comunatee}
+              comunatee={comunateeDetails.name}
               op={x.op}
               postId={x.id}
               text={x.content}
@@ -31,19 +45,18 @@ const Comunatee = () => {
   };
 
   const getComunateeSummary = () => {
-    var tempComunatee = communatees.filter((x) => x.name === comunatee)[0];
     return (
       <>
         <p>
-          {tempComunatee.description} - Owned by{" "}
-          <UsernameLink username={tempComunatee.owner}></UsernameLink>
+          {comunateeDetails.description} - Owned by{" "}
+          <UsernameLink username={comunateeDetails.owner}></UsernameLink>
         </p>
       </>
     );
   };
   return (
     <>
-      <h1>{comunatee}</h1>
+      <h1>{comunateeDetails.name}</h1>
       <>{getComunateeSummary()}</>
       <table>{getPosts()}</table>
     </>

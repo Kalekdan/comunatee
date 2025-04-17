@@ -18,9 +18,8 @@ const Profile = () => {
         console.error("Failed to fetch user:", error);
       }
     };
-
     fetchUser();
-  }, ); // Empty dependency array ensures this runs once on mount
+  }, ); 
 
   const getPosts = () => {
     var tempPosts = posts.filter((x) => x.op === username);

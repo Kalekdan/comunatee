@@ -31,7 +31,7 @@ const Layout = () => {
       }
     };
     fetchComunatee();
-  },); 
+  }, []); 
 
   const getUserListLinks = () => {
     return users.map((x) => (

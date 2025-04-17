@@ -10,7 +10,7 @@ const HeaderBar = () => {
             return (
                 <div>
                     <li>
-                        <ComunateeLink comunatee={x} />
+                        <ComunateeLink comunatee={x.name} />
                     </li>
                 </div>
 

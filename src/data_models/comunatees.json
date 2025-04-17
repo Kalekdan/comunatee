@@ -1,3 +1,14 @@
 [
-    "space","pictures"
+  {
+    "name": "space",
+    "description": "a place for all things space",
+    "banner": "",
+    "owner": "kalekdan"
+  },
+  {
+    "name": "pictures",
+    "description": "Comunatee for sharing your favorite pictures",
+    "banner": "",
+    "owner": "jamesiam"
+  }
 ]

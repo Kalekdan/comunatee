@@ -19,7 +19,7 @@ const Layout = () => {
     return comunatees.map((x) => {
       return (
         <li>
-          <ComunateeLink comunatee={x} />
+          <ComunateeLink comunatee={x.name} />
         </li>
       );
     });

@@ -6,7 +6,7 @@ To build and run locally:
 
 ### `pnpm start`
 
-## Latest build currently hosted at https://comunatee.netlify.app/
+## Latest build currently hosted at https://comunatee.netlify.app/ (no longer maintained due to lack of support for sprnig backend, no hosted version currently exists)
 
 # Backend
 The backend is built using spring - to run it, navigate to the /backend directory and run `./gradlew bootRun`

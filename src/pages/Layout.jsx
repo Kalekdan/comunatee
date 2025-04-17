@@ -1,32 +1,46 @@
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import users from "../data_models/users.json";
 import comunatees from "../data_models/comunatees.json";
 import UsernameLink from "../components/UsernameLink";
 import ComunateeLink from "../components/ComunateeLink";
 import HeaderBar from "../components/HeaderBar";
+import { getUsers } from "../api/users";
 
 const Layout = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const userList = await getUsers(); // Call the function to fetch users
+        setUsers(userList); // Update state with fetched users
+      } catch (error) {
+        console.error("Failed to fetch users:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []); // Empty dependency array ensures this runs once on mount
+
   const getUserListLinks = () => {
-    return users.map((x) => {
-      return (
-        <li>
-          <UsernameLink username={x.username} />
-        </li>
-      );
-    });
+    return users.map((x) => (
+      <li key={x.username}>
+        <UsernameLink username={x.username} />
+      </li>
+    ));
   };
+
   const getComunateeListLinks = () => {
-    return comunatees.map((x) => {
-      return (
-        <li>
-          <ComunateeLink comunatee={x.name} />
-        </li>
-      );
-    });
+    return comunatees.map((x) => (
+      <li key={x.name}>
+        <ComunateeLink comunatee={x.name} />
+      </li>
+    ));
   };
+
   return (
     <>
-    <HeaderBar/>
+      <HeaderBar />
       <table>
         <tr>
           <td>

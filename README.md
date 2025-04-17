@@ -8,6 +8,9 @@ To build and run locally:
 
 ## Latest build currently hosted at https://comunatee.netlify.app/
 
+# Backend
+The backend is built using spring - to run it, navigate to the /backend directory and run `./gradlew bootRun`
+
 # Comunatee
 
 ## Comments/Threads

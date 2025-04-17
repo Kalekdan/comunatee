@@ -1,15 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import posts from "../data_models/posts.json";
 import UsernameLink from "../components/UsernameLink";
 import PostLink from "../components/PostLink";
-import { getComunatees } from "../api/comunatees"; // Assuming you have an API function to fetch comunatees
+import { getComunatees } from "../api/comunatees";
+import { getPosts } from "../api/posts";
 
 const Comunatee = () => {
   const { comunatee } = useParams(); // comunatee name from URL
   const [comunateeDetails, setComunatee] = useState([]);
-
+  const [posts, setPosts] = useState([]); 
   useEffect(() => {
     const fetchComunatee = async () => {
       try {
@@ -21,11 +21,19 @@ const Comunatee = () => {
     };
     fetchComunatee();
   },); 
-
-  const getPosts = () => {
-    var tempPosts = posts.filter((x) => x.comunatee === comunateeDetails.name);
-
-    return tempPosts.map((x) => {
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const postsList = await getPosts(); // Call the function to fetch posts
+        setPosts(postsList.filter((x) => x.comunatee === comunatee)); // Update state with fetched comunatees
+      } catch (error) {
+        console.error("Failed to fetch posts:", error);
+      }
+    };
+    fetchPosts();
+  },); 
+  const getPostsList = () => {
+    return posts.map((x) => {
       return (
         <tr>
           <td>
@@ -58,7 +66,7 @@ const Comunatee = () => {
     <>
       <h1>{comunateeDetails.name}</h1>
       <>{getComunateeSummary()}</>
-      <table>{getPosts()}</table>
+      <table>{getPostsList()}</table>
     </>
   );
 };

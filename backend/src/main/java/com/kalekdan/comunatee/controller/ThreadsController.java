@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -32,6 +33,7 @@ public class ThreadsController {
 
     @PostMapping
     public Threads addThreads(@RequestBody Threads threads) {
+        threads.setCommentId(UUID.randomUUID().toString());
         threadsList.add(threads);
         return threads;
     }

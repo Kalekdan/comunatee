@@ -4,7 +4,7 @@ import Comment from "./Comment";
 import { getThreads } from "../api/threads";
 
 const Thread = ({ commentId }) => {
-  const [threads, setThreads] = useState([]);
+  const [threads, setThreads] = useState([commentId]);
   useEffect(() => {
     const fetchThreads = async () => {
       try {

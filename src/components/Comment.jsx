@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import UsernameLink from "./UsernameLink";
 import { getThreads } from "../api/threads";
+import { createThreads } from '../api/threads';
 
 const Comment = ({ content, op, commentId, level = 0 }) => {
   const [threads, setThreads] = useState([]);
@@ -16,6 +17,30 @@ const Comment = ({ content, op, commentId, level = 0 }) => {
     };
     fetchThreads();
   }, [commentId]);
+
+  const handleAddReply = async () => {
+    const replyContent = prompt("Write your reply:");
+    if (replyContent && replyContent.trim()) {
+      try {
+        // Create a new thread with the current comment as the parent
+        const newThread = await createThreads({
+          parentComment: commentId,
+          content: replyContent,
+          op: "kalekdan", 
+        });
+
+        // Update the threads state to include the new reply
+        setThreads((prevThreads) => [...prevThreads, newThread]);
+
+        alert("Reply added successfully!");
+      } catch (error) {
+        console.error("Error adding reply:", error);
+        alert("Failed to add reply.");
+      }
+    } else {
+      alert("Reply cannot be empty.");
+    }
+  };
 
   const generateIndents = (count) => {
     var toReturn = "";
@@ -35,6 +60,9 @@ const Comment = ({ content, op, commentId, level = 0 }) => {
             <UsernameLink username={op}></UsernameLink>
           </td>
           <td>{content}</td>
+          <td>
+            <button onClick={handleAddReply}>Reply</button>
+          </td>
         </tr>
       </table>
       {threads

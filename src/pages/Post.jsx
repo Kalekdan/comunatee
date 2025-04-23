@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getPosts } from "../api/posts";
 import CommentsSection from "../components/CommentsSection";
-import NewComment from "../components/NewComment";
 const Post = () => {
   // const { comunatee, username, postId } = useParams();
   const { postId } = useParams();
@@ -24,7 +23,6 @@ const Post = () => {
   return (
     <div>
       {post.content}
-      <NewComment></NewComment>
       <CommentsSection postId={post.id}></CommentsSection>
     </div>
   );

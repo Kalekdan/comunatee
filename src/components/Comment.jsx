@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import UsernameLink from "./UsernameLink";
 import { getThreads } from "../api/threads";
-import { createThreads } from "../api/threads";
 import ReplyButton from "./ReplyButton";
 
 const Comment = ({ content, op, commentId, level = 0 }) => {

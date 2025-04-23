@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.stream.events.Comment;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/comments")
@@ -19,9 +21,7 @@ public class CommentsController {
                         "3d9bfeb4-28db-40d2-aebe-83e69a12c3fc",
                         "f9dddb43-4219-455d-a2ae-b095b97fb8c4",
                         "3ee9f655-5056-41fa-8d38-496c3ec8964c",
-                        "8e89de3c-6843-459f-8445-efea7028a28f"
-                ))
-        ));
+                        "8e89de3c-6843-459f-8445-efea7028a28f"))));
     }
 
     @GetMapping
@@ -45,7 +45,10 @@ public class CommentsController {
                 comment.setThreads(threads);
                 return comment;
             }
-        }
-        return null; // or throw an exception if not found
+        }    
+        // If no comment exists with the given postId, create a new one
+        Comments newComment = new Comments(postId, new ArrayList<>(List.of(threadId)));
+        commentsList.add(newComment);
+        return newComment;
     }
 }

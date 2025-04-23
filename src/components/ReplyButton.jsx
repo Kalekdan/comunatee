@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { createThreads } from "../api/threads";
-
+import { addThreadToComment } from "../api/comments";
 const ReplyButton = ({ parentComment = null, postId = null, onReplyAdded }) => {
   const [isReplying, setIsReplying] = useState(false);
   const [replyContent, setReplyContent] = useState("");
@@ -22,6 +22,7 @@ const ReplyButton = ({ parentComment = null, postId = null, onReplyAdded }) => {
           postId: postId,
         });
 
+        await addThreadToComment(postId, newThread.commentId);
         if (onReplyAdded) {
           onReplyAdded(newThread);
         }

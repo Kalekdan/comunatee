@@ -21,16 +21,30 @@ const CommentsSection = ({ postId }) => {
   }, []);
 
   const handleReplyAdded = (newThread) => {
-    setComments((prevComments) =>
-      prevComments.map((comment) =>
-        comment.postId === postId
-          ? {
-              ...comment,
-              threads: [...comment.threads, newThread.commentId],
-            }
-          : comment
-      )
-    );
+    setComments((prevComments) => {
+      const commentExists = prevComments.some(
+        (comment) => comment.postId === postId
+      );
+
+      if (commentExists) {
+        return prevComments.map((comment) =>
+          comment.postId === postId
+            ? {
+                ...comment,
+                threads: [...comment.threads, newThread.commentId],
+              }
+            : comment
+        );
+      } else {
+        return [
+          ...prevComments,
+          {
+            postId: postId,
+            threads: [newThread.commentId],
+          },
+        ];
+      }
+    });
   };
 
   const getTopLevelComments = () => {

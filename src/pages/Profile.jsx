@@ -20,7 +20,7 @@ const Profile = () => {
       }
     };
     fetchUser();
-  }, ); 
+  }, [username]); 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -31,7 +31,7 @@ const Profile = () => {
       }
     };
     fetchPosts();
-  },); 
+  },[username]); 
 
   const getPostsList = () => {
     return posts.map((x) => {

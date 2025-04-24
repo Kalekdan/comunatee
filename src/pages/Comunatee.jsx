@@ -20,7 +20,7 @@ const Comunatee = () => {
       }
     };
     fetchComunatee();
-  },); 
+  }, [comunatee]); 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -31,7 +31,7 @@ const Comunatee = () => {
       }
     };
     fetchPosts();
-  },); 
+  }, [comunatee]); 
   const getPostsList = () => {
     return posts.map((x) => {
       return (
